@@ -86,6 +86,10 @@
 
     /* ---------- Fitur ---------- */
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    /* Isi kartu tidak boleh melebarkan kolom melebihi layar (mis. huruf HP diperbesar). */
+    .grid > *, .install > * { min-width: 0; }
+    .badge { margin-left: 0; }
+    .card, .card p, ol li { overflow-wrap: anywhere; }
     .card { background: var(--card); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
     .card h3 { margin: 14px 0 6px; font-size: 18px; }
     .card p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -102,7 +106,7 @@
     .install { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .install .card { padding: 32px; border: 3px solid transparent; transition: border-color .2s; }
     .install .card.highlight { border-color: var(--blue); }
-    .install h3 { display: flex; align-items: center; gap: 12px; font-size: 22px; margin: 0 0 6px; }
+    .install h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 22px; margin: 0 0 6px; }
     .install h3 svg { width: 30px; height: 30px; }
     .install .note { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
     ol { padding-left: 22px; margin: 0 0 24px; }
