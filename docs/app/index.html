@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <base href="/catbot-releases/app/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="CatBOT - robot kucing pintar. Versi web untuk iPhone (lewat Bluefy) dan Android (Chrome).">
+  <meta name="theme-color" content="#F6FBFF">
+
+  <!-- iOS: bisa ditambahkan ke Home Screen sebagai aplikasi -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CatBOT">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>CatBOT</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; background: #F6FBFF; }
+    /* Layar memuat (sebelum Flutter siap) */
+    #catbot-loading {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #1E1E1E;
+    }
+    #catbot-loading img { width: 140px; height: 140px; border-radius: 32px; }
+    #catbot-loading p { margin: 0; color: #555; font-size: 15px; }
+    /* Peringatan browser tanpa Bluetooth */
+    #catbot-ble-warning {
+      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9999;
+      display: none; padding: 14px 16px; border-radius: 16px;
+      background: #FFE9A0; color: #1E1E1E; box-shadow: 0 6px 24px rgba(0,0,0,.15);
+      font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    #catbot-ble-warning b { display: block; margin-bottom: 4px; }
+    #catbot-ble-warning button {
+      margin-top: 8px; border: 0; border-radius: 10px; padding: 6px 14px;
+      background: #1E1E1E; color: #fff; font: inherit; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="catbot-loading">
+    <img src="icons/Icon-192.png" alt="CatBOT">
+    <p>Memuat CatBOT...</p>
+  </div>
+
+  <div id="catbot-ble-warning">
+    <b>Browser ini belum bisa terhubung ke robot (Bluetooth).</b>
+    iPhone/iPad: buka halaman ini di aplikasi <b style="display:inline">Bluefy</b> (gratis di App Store).
+    Android/laptop: pakai Google Chrome atau Microsoft Edge.
+    <br><button onclick="this.parentElement.style.display='none'">Mengerti</button>
+  </div>
+
+  <script>
+    if (!('bluetooth' in navigator)) {
+      document.getElementById('catbot-ble-warning').style.display = 'block';
+    }
+    // Sembunyikan layar memuat setelah Flutter tampil.
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('catbot-loading');
+      if (el) el.remove();
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

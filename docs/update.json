@@ -1,0 +1,16 @@
+{
+  "app": {
+    "version": "1.0.0",
+    "url": "https://github.com/Paintingzboy/catbot-releases/releases/download/v1.0.0-fw1.4.1/catbot.apk",
+    "sha256": "09e2d328be5a2650813cee3382a54603b943dbc6a5463eb5796cc7e07babd093",
+    "size": 63876514,
+    "notes": "Rilis pertama"
+  },
+  "firmware": {
+    "version": "1.4.1",
+    "url": "https://github.com/Paintingzboy/catbot-releases/releases/download/v1.0.0-fw1.4.1/catbot_firmware.bin",
+    "md5": "eafb27dd2b9545de470658b958d30acf",
+    "size": 1014544,
+    "notes": "Menu robot, baterai, ulang tahun"
+  }
+}
